@@ -10,6 +10,13 @@ San Francisco and New York.
 - A cat icon shows what people in that office are probably doing at that hour
   (office hours 9:00–17:00, with a separate weekend schedule)
 
+## Install
+
+Download `OfficeClock-<version>-macOS-arm64.zip` from the
+[Releases](../../releases) page (Apple silicon only), move `OfficeClock.app` to
+`/Applications` and open it once. Then right-click the desktop → Edit Widgets… →
+"Unity Office Clock" (extra large, 4×2 only).
+
 ## Build
 
 See [Docs/Build-and-Install.md](Docs/Build-and-Install.md). Then right-click the
@@ -18,6 +25,7 @@ desktop → Edit Widgets… → "Unity Office Clock" (extra large, 4×2 only).
 ## Documentation
 
 - [Build-and-Install.md](Docs/Build-and-Install.md): signing, build, install and refreshing the widget cache
+- [Release.md](Docs/Release.md): signing, notarising and publishing a GitHub release with `Tools/package.sh`
 - [Troubleshooting.md](Docs/Troubleshooting.md): known problems and how they were diagnosed and fixed
 - [Platform-Notes.md](Docs/Platform-Notes.md): macOS WidgetKit behavior this project relies on
 - [Art-Pipeline.md](Docs/Art-Pipeline.md): how the cat icons were generated and imported
