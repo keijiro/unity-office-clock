@@ -48,11 +48,17 @@ enum PreviewRenderer {
               let hour = Double(args[i + 1]) else { return }
         let mode: WidgetRenderingMode = args.contains("--vibrant") ? .vibrant : args.contains("--accented") ? .accented : .fullColor
         let date = Calendar.current.startOfDay(for: .now).addingTimeInterval(hour * 3600)
-        let view = ClockRow(date: date)
+        let widget = ClockRow(date: date)
             .frame(width: 715, height: 354)
             .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
             .environment(\.clockPreviewMode, mode)
-            .padding(10).background(mode == .fullColor ? Color.gray : Color.black)
+        // --screenshot: transparent background with a desktop-widget-like shadow (for README).
+        let view = args.contains("--screenshot")
+            ? AnyView(widget
+                .shadow(color: .black.opacity(0.18), radius: 2, y: 1)
+                .shadow(color: .black.opacity(0.25), radius: 14, y: 6)
+                .padding(32))
+            : AnyView(widget.padding(10).background(mode == .fullColor ? Color.gray : Color.black))
         let r = ImageRenderer(content: view)
         r.scale = 2
         if let tiff = r.nsImage?.tiffRepresentation,

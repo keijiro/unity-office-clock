@@ -3,6 +3,8 @@
 A macOS widget showing the time in Unity's main offices: Copenhagen, Tokyo,
 San Francisco and New York.
 
+![Screenshot](Docs/Images/screenshot.png)
+
 - Digital time, plus weekday and a ±1 day marker relative to your local date
 - The sky gradient goes roughly from night to dawn, day, dusk and back (no seasonal variation)
 - A cat icon shows what people in that office are probably doing at that hour
@@ -31,3 +33,5 @@ desktop → Edit Widgets… → "Unity Office Clock" (extra large, 4×2 only).
 
 Debug: `OfficeClock --render <hour> > out.png` renders the widget at the given local hour
 (add `--accented` / `--vibrant` for grayscale layout approximations; actual system tinting must be checked on the desktop).
+Add `--screenshot` for a transparent background with a widget-style drop shadow; the README image
+was made with `OfficeClock --render 10.5 --screenshot > Docs/Images/screenshot.png` on a JST machine.
