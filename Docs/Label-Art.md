@@ -69,7 +69,7 @@ Mood and variation: Lively discussion, rhythmic upright bold letters, cyan blue 
 ### coffee_break
 
 ```text
-Text (verbatim): "Tea break"
+Text (verbatim): "Coffee Break"
 Mood and variation: Warm relaxed pause, flowing rounded letters, mint green and warm cream accents, tiny steam curls.
 ```
 
@@ -108,3 +108,11 @@ Text (verbatim): "Reading"
 Mood and variation: Peaceful absorbed reading, gentle rounded hand lettering, sage green and pale gold accents, one quiet small sparkle.
 ```
 
+
+## Coffee Break wording correction
+
+Built-in imagegen edit of the previous coffee_break label, with `transparent_background: true`. The current wording is `Coffee Break`; the tea leaf accent is removed.
+
+```text
+Use case: text-localization. Input image is the edit target and exact lettering style reference. Replace the wording with exactly "Coffee Break" (capital C, capital B, two words separated by a clearly visible word space). Spell C-o-f-f-e-e B-r-e-a-k correctly. Preserve the same flowing bold rounded manga hand-lettering style, creamy white letter faces, thick very dark plum outlines, mint-green outer keyline, warm orange halftone lower extrusion, small cream steam curls and little yellow emphasis rays. Remove the tea leaf decoration so it no longer implies tea. Single wide horizontal line, readable at small widget size, all letters and accents fully visible, tight framing with small safe transparent margins. Genuine transparent alpha background including letter holes, no opaque backdrop, no checkerboard, no character, no additional text or watermark.
+```

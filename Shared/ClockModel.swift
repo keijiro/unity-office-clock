@@ -51,7 +51,7 @@ enum Activity: String {
         case .focusedPC:   "Focused"
         case .lunch:       "Lunch"
         case .meeting:     "Meetings"
-        case .coffeeBreak: "Tea break"
+        case .coffeeBreak: "Coffee Break"
         case .leaving:     "Signing off"
         case .dinner:      "Dinner"
         case .relaxing:    "Off duty"

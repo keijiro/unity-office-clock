@@ -25,7 +25,7 @@ schedule were filled in by the implementer. Change them freely.
 ## Current design
 
 - Extra large (4×2) only, with the original office order.
-- Transparent color character illustrations follow `new-concept.png`: plum fur, green eyes, orange hoodie, and soft anime shading.
+- Transparent color character illustrations follow `Art/character-design.png`: plum fur, green eyes, white markings, and soft anime shading. Clothing, posture, expression and essential furniture vary by activity; sleep/wake/bedtime use lavender pajamas, and weekend reading uses a cream T-shirt. The orange hoodie remains the daytime outfit.
 - One continuous sky blends the four offices' local-time colors. No individual tile backgrounds, white image cards, borders or separators.
 - Each column places city, weekday and local time above the character, with a quiet activity caption below it.
 - Reduced rendering modes omit the sky and shadows; alpha-preserving desaturated artwork remains visible. Sun/moon symbols retain the day/night cue.
