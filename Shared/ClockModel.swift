@@ -40,6 +40,8 @@ enum Activity: String {
         }
     }
 
+    var labelImageName: String { imageName.replacingOccurrences(of: "cat_", with: "label_") }
+
     var label: String {
         switch self {
         case .sleep:       "Sleeping"

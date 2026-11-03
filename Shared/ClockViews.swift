@@ -77,25 +77,30 @@ struct OfficeTile: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
                 .padding(.top, 5)
-            artwork
-                .scaledToFit()
+            GeometryReader { geometry in
+                ZStack(alignment: .bottom) {
+                    artwork(state.activity.imageName)
+                        .scaledToFit()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                        .padding(.bottom, 22)
+                    artwork(state.activity.labelImageName)
+                        .scaledToFit()
+                        .frame(width: geometry.size.width * 0.94, height: 58, alignment: .bottom)
+                }
                 .shadow(color: .black.opacity(reduced ? 0 : 0.22), radius: 5, y: 5)
+            }
                 .padding(.horizontal, 3)
                 .padding(.top, 8)
+                .padding(.bottom, 18)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-            Text(state.activity.label)
-                .font(.system(size: 12, weight: .medium, design: .rounded))
-                .opacity(0.85)
-                .padding(.top, 8)
-                .padding(.bottom, 22)
         }
         .foregroundStyle(.white)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("\(state.office.name), \(state.timeString), \(dayText), \(state.activity.label)")
     }
 
-    @ViewBuilder private var artwork: some View {
-        let image = Image(state.activity.imageName).resizable().interpolation(.high)
+    @ViewBuilder private func artwork(_ name: String) -> some View {
+        let image = Image(name).resizable().interpolation(.high)
         if previewMode != nil {
             // ImageRenderer cannot reproduce WidgetKit's compositing pass.
             image.saturation(reduced ? 0 : 1)

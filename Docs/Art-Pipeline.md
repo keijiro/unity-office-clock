@@ -1,5 +1,8 @@
 # Art Pipeline
 
+Activity captions use separate transparent manga lettering, composited over the
+character artwork. See [Label-Art.md](Label-Art.md) for assets and generation prompts.
+
 The current artwork uses `new-concept.png` as the character and style reference. All 13 activity illustrations were generated individually with the built-in imagegen tool, requesting a genuinely transparent background.
 
 `Art/<name>.png` contains the full-resolution master. `Shared/Assets.xcassets/cat_<name>.imageset/` contains a 480px copy with alpha preserved. Never convert these assets to RGB or add a background. The UI draws the silhouettes directly on a continuous sky.
