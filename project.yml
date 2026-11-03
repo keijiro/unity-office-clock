@@ -1,0 +1,54 @@
+name: OfficeClock
+options:
+  bundleIdPrefix: jp.keijiro
+  deploymentTarget:
+    macOS: "15.0"
+settings:
+  base:
+    DEVELOPMENT_TEAM: N6V3488B33
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: "Apple Development"
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "9"
+targets:
+  OfficeClock:
+    type: application
+    platform: macOS
+    sources:
+      - App
+      - Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: jp.keijiro.OfficeClock
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Office Clock
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
+        ENABLE_HARDENED_RUNTIME: YES
+    entitlements:
+      path: App/OfficeClock.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+    dependencies:
+      - target: OfficeClockWidget
+  OfficeClockWidget:
+    type: app-extension
+    platform: macOS
+    sources:
+      - Widget
+      - Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: jp.keijiro.OfficeClock.Widget
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Office Clock
+        ENABLE_HARDENED_RUNTIME: YES
+    info:
+      path: Widget/Info.plist
+      properties:
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    entitlements:
+      path: Widget/OfficeClockWidget.entitlements
+      properties:
+        com.apple.security.app-sandbox: true

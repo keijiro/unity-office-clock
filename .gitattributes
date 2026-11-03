@@ -1,0 +1,15 @@
+# Normalize line endings for text files
+* text=auto eol=lf
+
+*.swift    text diff=swift
+*.md       text diff=markdown
+*.yml      text
+*.json     text
+*.plist    text
+*.entitlements text
+
+# Binary assets
+*.png      binary
+*.jpg      binary
+*.jpeg     binary
+*.pdf      binary
