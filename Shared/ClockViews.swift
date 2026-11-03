@@ -59,10 +59,10 @@ struct OfficeTile: View {
     var body: some View {
         VStack(spacing: 0) {
             Text(state.office.name)
-                .font(.system(size: 14, weight: .semibold, design: .rounded))
+                .font(.custom("Noteworthy-Bold", size: 19))
                 .lineLimit(1)
-                .minimumScaleFactor(0.75)
-                .padding(.top, 23)
+                .minimumScaleFactor(0.7)
+                .padding(.top, 14)
             HStack(spacing: 4) {
                 Image(systemName: dark ? "moon.stars.fill" : "sun.max.fill")
                     .font(.system(size: 9))
@@ -70,27 +70,32 @@ struct OfficeTile: View {
             }
             .font(.system(size: 11, weight: .medium, design: .rounded))
             .opacity(0.75)
-            .padding(.top, 5)
-            Text(state.timeString)
-                .font(.system(size: 43, weight: .medium, design: .rounded))
-                .monospacedDigit()
-                .lineLimit(1)
-                .minimumScaleFactor(0.7)
-                .padding(.top, 5)
             GeometryReader { geometry in
-                ZStack(alignment: .bottom) {
-                    artwork(state.activity.imageName)
-                        .scaledToFit()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-                        .padding(.bottom, 22)
-                    artwork(state.activity.labelImageName)
-                        .scaledToFit()
-                        .frame(width: geometry.size.width * 0.94, height: 58, alignment: .bottom)
+                ZStack(alignment: .top) {
+                    // The character overlaps the lower part of the digits.
+                    Text(state.timeString)
+                        .font(.system(size: 100, weight: .semibold).width(.compressed))
+                        .monospacedDigit()
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.6)
+                        .tracking(-2)
+                        .frame(width: geometry.size.width * 0.9)
+                        .scaleEffect(x: 1, y: 1.25, anchor: .top)
+                        .padding(.top, -20)
+                    ZStack(alignment: .bottom) {
+                        artwork(state.activity.imageName)
+                            .scaledToFit()
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                            .padding(.bottom, 22)
+                        artwork(state.activity.labelImageName)
+                            .scaledToFit()
+                            .frame(width: geometry.size.width * 0.94, height: 58, alignment: .bottom)
+                    }
+                    .shadow(color: .black.opacity(reduced ? 0 : 0.22), radius: 5, y: 5)
+                    .padding(.top, 44)
                 }
-                .shadow(color: .black.opacity(reduced ? 0 : 0.22), radius: 5, y: 5)
             }
                 .padding(.horizontal, 3)
-                .padding(.top, 8)
                 .padding(.bottom, 18)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }

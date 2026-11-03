@@ -27,7 +27,7 @@ schedule were filled in by the implementer. Change them freely.
 - Extra large (4×2) only, with the original office order.
 - Transparent color character illustrations follow `Art/character-design.png`: plum fur, green eyes, white markings, and soft anime shading. Clothing, posture, expression and essential furniture vary by activity; sleep/wake/bedtime use lavender pajamas, and weekend reading uses a cream T-shirt. The orange hoodie remains the daytime outfit.
 - One continuous sky blends the four offices' local-time colors. No individual tile backgrounds, white image cards, borders or separators.
-- Each column places city, weekday and local time above the character, with a quiet activity caption below it.
+- Each column shows the city name in a handwritten font (system Noteworthy Bold) and the weekday at the top. Below them, the local time is set very large in compressed SF Pro, and the character is drawn on top of it so that its head covers the bottom of the digits. The activity label artwork sits below the character.
 - Reduced rendering modes omit the sky and shadows; alpha-preserving desaturated artwork remains visible. Sun/moon symbols retain the day/night cue.
 - Date offsets are relative to the viewer's own calendar date.
 - The existing weekday/weekend schedule is retained; weekend artwork now shows reading.

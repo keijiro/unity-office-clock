@@ -10,7 +10,7 @@ settings:
     CODE_SIGN_IDENTITY: "Apple Development"
     SWIFT_VERSION: "5.0"
     MARKETING_VERSION: "1.0"
-    CURRENT_PROJECT_VERSION: "15"
+    CURRENT_PROJECT_VERSION: "17"
 targets:
   OfficeClock:
     type: application
