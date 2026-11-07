@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 import WidgetKit
 
@@ -73,11 +74,14 @@ struct OfficeTile: View {
             GeometryReader { geometry in
                 ZStack(alignment: .top) {
                     // The character overlaps the lower part of the digits.
+                    // The font size is fitted to a two-digit-hour template so that
+                    // single-digit hours keep the same height (only narrower).
                     Text(state.timeString)
-                        .font(.system(size: 100, weight: .semibold).width(.compressed))
+                        .font(.system(size: Self.timeFontSize(forWidth: geometry.size.width * 0.9),
+                                      weight: .semibold).width(.compressed))
                         .monospacedDigit()
                         .lineLimit(1)
-                        .minimumScaleFactor(0.6)
+                        .minimumScaleFactor(0.9)
                         .tracking(-2)
                         .frame(width: geometry.size.width * 0.9)
                         .scaleEffect(x: 1, y: 1.25, anchor: .top)
@@ -112,6 +116,24 @@ struct OfficeTile: View {
         } else {
             image.widgetAccentedRenderingMode(.desaturated)
         }
+    }
+
+    /// Font size at which the widest time string ("00:00") fits the given width.
+    private static func timeFontSize(forWidth width: CGFloat) -> CGFloat {
+        let base: CGFloat = 100
+        let font = NSFont.systemFont(ofSize: base, weight: .semibold, width: .compressed)
+        let monospaced = font.fontDescriptor.addingAttributes([
+            .featureSettings: [[
+                NSFontDescriptor.FeatureKey.typeIdentifier: kNumberSpacingType,
+                NSFontDescriptor.FeatureKey.selectorIdentifier: kMonospacedNumbersSelector,
+            ]],
+        ])
+        let measured = NSFont(descriptor: monospaced, size: base) ?? font
+        let templateWidth = ("00:00" as NSString)
+            .size(withAttributes: [.font: measured, .kern: -2]).width
+        guard templateWidth > 0 else { return base }
+        // Small margin so the two-digit case never hits minimumScaleFactor.
+        return base * min(1, max(0.6, width * 0.98 / templateWidth))
     }
 
     private var dayText: String {
